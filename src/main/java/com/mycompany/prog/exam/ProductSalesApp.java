@@ -145,6 +145,7 @@ public class ProductSalesApp extends JFrame {
         return menuBar;
     }
 
+    ///PROMPTS USER FOR INPUT
     private void processSale() {
         String name = txtName.getText().trim();
 
