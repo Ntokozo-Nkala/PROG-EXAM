@@ -1,0 +1,7 @@
+DATA LOG
+*********************************
+Customer Name: Swizz
+Product: Cozy Nights Monarch
+VAT: R 75.00
+Total Sales: R 600.0
+************************************

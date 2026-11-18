@@ -14,6 +14,7 @@ public class Question1 {
 
     public void main(String[] args){
         Question1 report = new Question1();
+        report.enterStock();
         report.salesReport();
         report.totalSales();
         report.averageSales();
@@ -23,16 +24,11 @@ public class Question1 {
     
     public void enterStock(){
         for(int i = 0; i < company.length; i++){
-        System.out.print("Enter number of sales for month 1 " + company[i] + ": ");
-        salesQuantities[0][0] = scanner.nextInt();
-        
-        System.out.print(" Enter number of sales for month 2 " + company[i] + ": ");
-        salesQuantities[1][0] = scanner.nextInt();
-        
-        System.out.print("Enter number of sales for month 3 " + company[i] + ": ");
-        salesQuantities[2][0] = scanner.nextInt();
-        
-        salesTotal[i] = salesQuantities[i][0] + salesQuantities[i][1] + salesQuantities[i][2];
+        for(int month = 0; month < 3; month++){
+            System.out.print("Enter number of sales for month " + (month + 1) + " " + company[i] + ": ");
+            salesQuantities[i][month] = scanner.nextInt();
+            salesTotal[i] += salesQuantities[i][month];
+        }
     }
 }
     
@@ -42,7 +38,7 @@ public class Question1 {
         System.out.print("\n*********************************");
        System.out.print("\nTOTAL PRODUCT SALES: " + totalSales());
               System.out.print("\nAVERAGE PRODUUCT SALES: " + averageSales());
-       System.out.print("\nMOST POPULAR PRODUCT: " + mostPopular() + maxSales());
+       System.out.print("\nMOST POPULAR PRODUCT: " + mostPopular());
         System.out.print("\n--------------------------------");
 
     }
@@ -66,41 +62,32 @@ public class Question1 {
            count++; //COUNTS THE NUMBERS IN THE ARRAY
             }
         }
-        int average = (int) Math.round((double)total / count); //THIS ROUNDS THE NUMBER OFF TO A WHOLE NUMBER 
+        int average = (int) Math.round((double)total / count); //ROUNDS THE NUMBER OFF TO A WHOLE NUMBER 
      return average;
     }
     
     public int maxSales(){
         int maximum = salesQuantities[0][0]; 
-         for(int i = 0; i < salesQuantities.length; i++){ //TAKE NOTE OF THE I AND X, I = ROW, X = COL
+         for(int i = 0; i < salesQuantities.length; i++){ 
        for( int x = 0; x < salesQuantities[i].length; x++){ 
            if(salesQuantities[i][x] > maximum){ 
-               maximum = salesQuantities[i][x]; //STORE THE NUMBER FOUND AS MAXIMUM/BIGGEST
+               maximum = salesQuantities[i][x]; //STORE THE NUMBER FOUND AS MAXIMUM/MOST POPULAR
            }
        }
     }
          return maximum;
          }
     
-public void mostPopular(){
-       //WE START WITH THE FIRST CITY'S TOTAL
-       int maxCompany = salesTotal[0];
-       //STORE THE INDEX OF THE COMPANY WITH THE MOST ACCIIDENTS
-       int maxCompanyIndex = 0;
-       
-       //USING THE CITIES ARRAY BECAUSE WE ARE TRYING TO FIND ONE MAX CITY
-       for( int i = 1; i < company.length; i++){ //ALWAYS START AT 1
-           
-           if(salesTotal[i] > maxCompany){
-               maxCompany = salesTotal[i];
-               maxCompanyIndex = i;
-           }
-       }
-       System.out.println();
-       //PRINTS MOST POPULAR PRODUCT
-       System.out.println("MOST POPULAR PRODUCT: " + company [maxCompanyIndex] + maxSales());
-   }
-
-
+public String mostPopular(){
+     int maxTotal = salesTotal[0];
+    int maxIndex = 0;
+    for(int i = 1; i < company.length; i++){
+        if(salesTotal[i] > maxTotal){
+            maxTotal = salesTotal[i];
+            maxIndex = i;
+        }
+    }
+    return company[maxIndex] + "(" + maxTotal + ")";  
+}
 }
     
