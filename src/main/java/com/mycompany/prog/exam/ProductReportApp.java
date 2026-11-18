@@ -8,16 +8,14 @@ import java.util.Scanner;
 
 public class ProductReportApp {
     
-    // print the report 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         String[] productNames = {"Cozy Nights Monarch mattress",
                                  "Restonic Barbados mattress",
                                  "Sealy Phuket mattress"};
         int[][] salesQuantities = new int[3][3];
 
-        // Capture 3 months of sales for each product
+        // Capture 3 months of sales 
         for (int i = 0; i < productNames.length; i++) {
             for (int month = 0; month < salesQuantities[i].length; month++) {
                 System.out.print("Enter number of sales for month " + (month + 1)
@@ -38,7 +36,6 @@ public class ProductReportApp {
     }
 
     public static class Product implements IProducts {
-
         private final int[][] salesQuantities;  
         private final String[] productNames;    
 
@@ -83,7 +80,7 @@ public class ProductReportApp {
             return productNames[maxIndex] + " " + maxTotal ;
         }
 
-        // Helper: total sales of one product (one row of the 2D array)
+        // total sales of one product (one row of the 2D array)
         private int getProductTotal(int row) {
             int total = 0;
             for (int x = 0; x < salesQuantities[row].length; x++) {

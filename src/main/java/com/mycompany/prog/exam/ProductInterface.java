@@ -91,12 +91,14 @@ public class ProductInterface {
             scanner.close();
         }
 
+        //PROMPTS USER FOR INPUT/PRICE
         private double promptForPrice() {
             System.out.print("Enter Product Price: ");
             return Double.parseDouble(scanner.nextLine());
         
         }
 
+        //PRINTS REPORT
         private void displaySaleDetails(Sale sale) {
             System.out.println("\n******* Sales Details *****");
             System.out.println("Customer Name: " + sale.getCustomerName());

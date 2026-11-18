@@ -95,7 +95,7 @@ public class ProductSalesApp extends JFrame {
         btnExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);                            // close the application
+                System.exit(0);                          
             }
         });
 
@@ -114,7 +114,7 @@ public class ProductSalesApp extends JFrame {
         itemExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);                            // close the application
+                System.exit(0);                           
             }
         });
         fileMenu.add(itemExit);
@@ -186,12 +186,12 @@ public class ProductSalesApp extends JFrame {
     private void saveData(String name, String product, double vat, double total) {
          try (PrintWriter writer = new PrintWriter(new FileWriter("data.txt"))){ 
             writer.println("DATA LOG");
-            writer.println("*********************************");
-            writer.println("Customer Name: " + name);
+           writer.println("*********************************");
+             writer.println("Customer Name: " + name);
             writer.println("Product: " + product);
-            writer.println("VAT: " + formatRands(vat));
+         writer.println("VAT: " + formatRands(vat));
             writer.println("Total Sales: " + "R " + total );
-            writer.println("************************************");
+             writer.println("************************************");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error saving data: " + e.getMessage());
         }

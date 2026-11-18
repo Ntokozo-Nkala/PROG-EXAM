@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Question1 {
        
     Scanner scanner = new Scanner(System.in);
+    //ARRAYS 
     int[][] salesQuantities = new int[3][3];
     int[] salesTotal = new int[3];
     String[] company = {"Cozy Nights Monarch matteress","Restonic Barbados mattress", "Sealy Phuket mattress"};
@@ -22,6 +23,7 @@ public class Question1 {
         report.mostPopular();
     }
     
+    //PROMPTS USER TO ENTER THE SALES OF THE MONTH
     public void enterStock(){
         for(int i = 0; i < company.length; i++){
         for(int month = 0; month < 3; month++){
@@ -32,52 +34,54 @@ public class Question1 {
     }
 }
     
-     
+     //PRINTS THE REPORT
     public void salesReport(){
-        System.out.print("\nPRODUCT SALES REPORT - 2026");
+        System.out.print("\nPRODUCT SALES REPORT 2026");
         System.out.print("\n*********************************");
        System.out.print("\nTOTAL PRODUCT SALES: " + totalSales());
               System.out.print("\nAVERAGE PRODUUCT SALES: " + averageSales());
        System.out.print("\nMOST POPULAR PRODUCT: " + mostPopular());
-        System.out.print("\n--------------------------------");
 
     }
     
+    //CALCULATES THE TOTAL SALES
     public int totalSales(){
         int total = 0;
         for(int i = 0; i < salesQuantities.length; i++){
             for( int x = 0; x < salesQuantities[i].length; x++){
-                total += salesQuantities[i][x]; //ADD ALL THE NUMBERS IN BOTH ROW AND COL
+                total += salesQuantities[i][x]; 
             }
         }
         return total;
     }
     
+    //CALCULATES AVERAGE
     public int averageSales(){
         int total = 0;
         int count = 0;
         for(int i = 0; i < salesQuantities.length; i++){
        for( int x = 0; x < salesQuantities[i].length; x++){
            total += salesQuantities[i][x];
-           count++; //COUNTS THE NUMBERS IN THE ARRAY
+           count++; 
             }
         }
-        int average = (int) Math.round((double)total / count); //ROUNDS THE NUMBER OFF TO A WHOLE NUMBER 
+        int average = (int) Math.round((double)total / count); 
      return average;
     }
     
+    //CALCULATES MAX SALES
     public int maxSales(){
         int maximum = salesQuantities[0][0]; 
          for(int i = 0; i < salesQuantities.length; i++){ 
        for( int x = 0; x < salesQuantities[i].length; x++){ 
            if(salesQuantities[i][x] > maximum){ 
-               maximum = salesQuantities[i][x]; //STORE THE NUMBER FOUND AS MAXIMUM/MOST POPULAR
+               maximum = salesQuantities[i][x]; 
            }
        }
     }
          return maximum;
          }
-    
+    //SHOWS THE MOST POPULAR 
 public String mostPopular(){
      int maxTotal = salesTotal[0];
     int maxIndex = 0;
